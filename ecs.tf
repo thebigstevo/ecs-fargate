@@ -1,18 +1,7 @@
-resource "ecs" "main" {
+resource "aws_ecs_cluster" "main" {
   name= "app-cluster"
 }
 
-data "template_file" "app" {
-  template = "${file("task-definitions/app.json")}"
-
-  vars= {
-    app_image      = "${var.app_image}"
-    app_port       = "${var.app_port}"
-    fargate_cpu    = "${var.fargate_cpu}"
-    fargate_memory = "${var.fargate_memory}"
-    aws_region     = "${var.aws_region}"
-  }
-}
 
 resource "aws_ecs_task_definition" "app" {
   family                   = "app-task"
@@ -21,7 +10,14 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "${var.fargate_cpu}"
   memory                   = "${var.fargate_memory}"
-  container_definitions    = "${data.template_file.app.rendered}"
+  container_definitions    = templatefile("./templates/ecs/cb_app.json.tpl", {
+    app_image      = "${var.app_image}"
+    app_port       = "${var.app_port}"
+    fargate_cpu    = "${var.fargate_cpu}"
+    fargate_memory = "${var.fargate_memory}"
+    aws_region     = "${var.aws_region}"
+  }
+  )
 }
 
 resource "aws_ecs_service" "main" {
