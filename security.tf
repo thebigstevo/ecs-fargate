@@ -39,5 +39,5 @@ resource "aws_security_group" "ecs_tasks" {
         to_port = 0
         cidr_blocks = ["0.0.0.0/0"]
     }
-    depends_on = [ aws_security_group.alb_sg.name ]
+    depends_on = [ aws_security_group.alb_sg ]
 }
