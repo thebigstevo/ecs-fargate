@@ -10,6 +10,11 @@ resource "aws_ecs_task_definition" "app" {
   requires_compatibilities = ["FARGATE"]
   cpu                      = "${var.fargate_cpu}"
   memory                   = "${var.fargate_memory}"
+  lifecycle {
+    ignore_changes = [task_definition]  # Ignore changes to task_definition. We'll manage this with Terraform scripts. 
+    create_before_destroy = true  # This is a workaround for Terraform not supporting depends_on properly.
+    
+  }
   container_definitions    = templatefile("./templates/ecs/cb_app.json.tpl", {
     app_image      = "${var.app_image}"
     app_port       = "${var.app_port}"
