@@ -2,9 +2,9 @@
   {
     "name": "cb-app",
     "image": "${app_image}",
-    "cpu": "${fargate_cpu}",
-    "cpu": "${tonumber(fargate_cpu)}",
-    "memory": "${tonumber(fargate_memory)}",
+    "cpu": ${fargate_cpu},
+    "memory": ${fargate_memory},
+    "networkMode": "awsvpc",
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
