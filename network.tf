@@ -23,11 +23,14 @@ resource "aws_subnet" "public" {
     availability_zone       = data.aws_availability_zones.available.names[count.index]
     vpc_id                  = aws_vpc.ecs-main.id
     map_public_ip_on_launch = true
+    depends_on              = [aws_internet_gateway.gw]
+
 }
 
 # Internet Gateway for the public subnet
 resource "aws_internet_gateway" "gw" {
     vpc_id = aws_vpc.ecs-main.id
+    depends_on = [aws_vpc.ecs-main]
 }
 
 # Route the public subnet traffic through the IGW
@@ -48,6 +51,7 @@ resource "aws_nat_gateway" "gw" {
     count         = var.az_count
     subnet_id     = element(aws_subnet.public.*.id, count.index)
     allocation_id = element(aws_eip.gw.*.id, count.index)
+    
 }
 
 # Create a new route table for the private subnets, make it route non-local traffic through the NAT gateway to the internet
