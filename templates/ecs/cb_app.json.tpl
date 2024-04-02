@@ -16,8 +16,8 @@
     "portMappings": [
       {
         "name": "${ollama_backend_port}",
-        "containerPort": "${ollama_port}",
-        "hostPort": "${ollama_port}"
+        "containerPort": ${ollama_port},
+        "hostPort": ${ollama_port}
       }
     ]
   },
@@ -37,8 +37,8 @@
     },
     "portMappings": [
       {
-        "containerPort": "${webui_port}",
-        "hostPort": "${webui_port}"
+        "containerPort": ${webui_port},
+        "hostPort": ${webui_port}
       }
     ]
   }
