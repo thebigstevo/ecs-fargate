@@ -16,8 +16,8 @@
     "portMappings": [
       {
         "name":${ollama_backend_port},
-        "containerPort": ${app_port},
-        "hostPort": ${app_port}
+        "containerPort": ${ollama_port},
+        "hostPort": ${ollama_port}
       }
     ]
   },
