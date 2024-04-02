@@ -2,8 +2,8 @@
   {
     "name": "${ollama_backend_container}",
     "image": "${ollama_image}",
-    "cpu": ${fargate_cpu},
-    "memory": ${fargate_memory},
+    "cpu": "${fargate_cpu}",
+    "memory": "${fargate_memory}",
     "networkMode": "awsvpc",
     "logConfiguration": {
         "logDriver": "awslogs",
@@ -15,17 +15,17 @@
     },
     "portMappings": [
       {
-        "name":${ollama_backend_port},
-        "containerPort": ${ollama_port},
-        "hostPort": ${ollama_port}
+        "name": "${ollama_backend_port}",
+        "containerPort": "${ollama_port}",
+        "hostPort": "${ollama_port}"
       }
     ]
   },
    {
     "name": "${webui_container}",
     "image": "${webui_image}",
-    "cpu": ${fargate_cpu},
-    "memory": ${fargate_memory},
+    "cpu": "${fargate_cpu}",
+    "memory": "${fargate_memory}",
     "networkMode": "awsvpc",
     "logConfiguration": {
         "logDriver": "awslogs",
@@ -37,8 +37,8 @@
     },
     "portMappings": [
       {
-        "containerPort": ${webui_port},
-        "hostPort": ${webui_port}
+        "containerPort": "${webui_port}",
+        "hostPort": "${webui_port}"
       }
     ]
   }
