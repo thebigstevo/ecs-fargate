@@ -1,6 +1,6 @@
 [
   {
-    "name": "${var.ollama_backend_container}",
+    "name": "${ollama_backend_container}",
     "image": "${ollama_image}",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
