@@ -2,8 +2,8 @@
   {
     "name": "${ollama_backend_container}",
     "image": "${ollama_image}",
-    "cpu": "${fargate_cpu}",
-    "memory": "${fargate_memory}",
+    "cpu": ${fargate_cpu},
+    "memory": ${fargate_memory},
     "networkMode": "awsvpc",
     "logConfiguration": {
         "logDriver": "awslogs",
@@ -24,8 +24,8 @@
    {
     "name": "${webui_container}",
     "image": "${webui_image}",
-    "cpu": "${fargate_cpu}",
-    "memory": "${fargate_memory}",
+    "cpu": ${fargate_cpu},
+    "memory": ${fargate_memory},
     "networkMode": "awsvpc",
     "logConfiguration": {
         "logDriver": "awslogs",
