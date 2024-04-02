@@ -53,6 +53,9 @@ variable "ollama_backend_container" {
   default = "ollama_backend_container"
 }
 
+variable "ollama_backend_port" {
+  default = "ollama_backend_container"
+}
 variable "webui_container" {
   default = "webui_container"
 }

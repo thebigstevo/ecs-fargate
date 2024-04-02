@@ -19,6 +19,7 @@ resource "aws_ecs_task_definition" "ollama" {
 
     ollama_image             = "${var.ollama_image}"
     ollama_backend_container = "${var.ollama_backend_container}"
+    ollama_backend_port = "${var.ollama_backend_port}"
     webui_container          = "${var.webui_container}"
     webui_image              = "${var.webui_image}"
     ollama_port              = "${var.ollama_port}"
