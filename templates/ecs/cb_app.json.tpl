@@ -1,4 +1,4 @@
-[
+
   {
     "name": "${ollama_backend_container}",
     "image": "${ollama_image}",
@@ -34,13 +34,15 @@
           "awslogs-region": "${aws_region}",
           "awslogs-stream-prefix": "ecs"
         }
-    "environment": [
-  {
-    "name": "OLLAMA_BASE_URL",
-    "value": "http://${ollama_backend_container}:${ollama_port}" 
-  }
-  ]
     },
+    "environment": [
+   {
+     "name": "OLLAMA_BASE_URL",
+     "value": "http://${ollama_backend_container}:${ollama_port}" 
+   }
+  
+  ],
+    
     "portMappings": [
       {
         "containerPort": ${webui_port},
@@ -48,4 +50,4 @@
       }
     ]
   }
-]
+
