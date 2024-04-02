@@ -8,7 +8,7 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/ollama_backend",
+          "awslogs-group": "/ecs/ollama",
           "awslogs-region": "${aws_region}",
           "awslogs-stream-prefix": "ecs"
         }
@@ -30,7 +30,7 @@
     "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/ollama-webui",
+          "awslogs-group": "/ecs/webui",
           "awslogs-region": "${aws_region}",
           "awslogs-stream-prefix": "ecs"
         }
