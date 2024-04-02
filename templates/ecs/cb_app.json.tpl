@@ -22,7 +22,7 @@
     ]
   },
    {
-    "name": "${var.webui_container}",
+    "name": "${webui_container}",
     "image": "${webui_image}",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},

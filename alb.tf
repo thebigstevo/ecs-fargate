@@ -4,8 +4,8 @@ resource "aws_alb" "main_lb" {
   security_groups = [aws_security_group.alb_sg.id]
 }
 
-resource "aws_alb_target_group" "ollama_tg" {
-  name        = "app-target-group"
+resource "aws_alb_target_group" "webui_tg" {
+  name        = "webui-target-group"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = aws_vpc.ecs-main.id
@@ -27,7 +27,7 @@ resource "aws_alb_listener" "webui_li" {
   protocol          = "HTTP"
 
   default_action {
-    target_group_arn = aws_alb_target_group.ollama_tg.arn
+    target_group_arn = aws_alb_target_group.webui_tg.arn
     type             = "forward"
   }
 }

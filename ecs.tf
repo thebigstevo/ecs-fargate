@@ -46,10 +46,10 @@ resource "aws_ecs_service" "ollama_service" {
   }
 
   load_balancer {
-    target_group_arn = aws_alb_target_group.webui.id
+    target_group_arn = aws_alb_target_group.webui_tg.id
     container_name   = var.webui_container
     container_port   = var.webui_port
   }
 
-  depends_on = [aws_alb_listener.front_end, aws_iam_role_policy_attachment.ecs-task-execution-role-policy-attachment]
+  depends_on = [aws_alb_listener.webui_li, aws_iam_role_policy_attachment.ecs-task-execution-role-policy-attachment]
 }
