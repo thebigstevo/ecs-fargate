@@ -67,7 +67,12 @@ variable "app_count" {
 variable "health_check_path" {
   default = "/"
 }
-
+variable "total_fargate_cpu" {
+  default = "4096"
+}
+variable "total_fargate_memory" {
+  default = "8192"
+}
 variable "fargate_cpu" {
   description = "Fargate instance CPU units to provision (1 vCPU = 1024 CPU units)"
   default     = "1024"
