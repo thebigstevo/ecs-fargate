@@ -11,15 +11,12 @@ resource "aws_ecs_task_definition" "ollama" {
   cpu                      = var.fargate_cpu
   memory                   = var.fargate_memory
   lifecycle {
-    # ignore_changes = [task_definition]  # Ignore changes to task_definition. We'll manage this with Terraform scripts. 
-    create_before_destroy = true # This is a workaround for Terraform not supporting depends_on properly.
 
   }
   container_definitions = templatefile("./templates/ecs/cb_app.json.tpl", {
-
     ollama_image             = "${var.ollama_image}"
     ollama_backend_container = "${var.ollama_backend_container}"
-    ollama_backend_port = "${var.ollama_backend_port}"
+    ollama_backend_port      = "${var.ollama_backend_port}"
     webui_container          = "${var.webui_container}"
     webui_image              = "${var.webui_image}"
     ollama_port              = "${var.ollama_port}"
@@ -27,9 +24,7 @@ resource "aws_ecs_task_definition" "ollama" {
     fargate_cpu              = "${var.fargate_cpu}"
     fargate_memory           = "${var.fargate_memory}"
     aws_region               = "${var.aws_region}"
-
-    }
-  )
+  })
 }
 
 resource "aws_ecs_service" "ollama_service" {
